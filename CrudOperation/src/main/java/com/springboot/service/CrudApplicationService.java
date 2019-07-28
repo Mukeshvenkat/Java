@@ -19,11 +19,35 @@ public class CrudApplicationService {
 
 	public Student getStudent(int id) {
 		Student studentVal = new Student();
-		for(Student students : studentList) {
-			if(students.getId() == id) {
+		for (Student students : studentList) {
+			if (students.getId() == id) {
 				studentVal = students;
 			}
 		}
-	return studentVal;
+		return studentVal;
+	}
+
+	public void addStudent(Student student) {
+		studentList.add(student);
+	}
+
+	public void updateStudent(Student student, int id) {
+		for (int i = 0; i < studentList.size(); i++) {
+			Student students = studentList.get(i);
+			if(students.getId() == id) {
+				studentList.set(i, student);
+				return;
+			}
+		}
+	}
+
+	public void deleteStudent(int id) {
+		for (int i = 0; i < studentList.size(); i++) {
+			Student student = studentList.get(i);
+			if (student.getId() == id) {
+				studentList.remove(student);
+				return;
+			}
+		}
 	}
 }
